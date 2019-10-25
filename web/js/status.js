@@ -45,7 +45,7 @@ function getData () {
                 statusParagraph.removeChild(statusParagraph.childNodes[0]);
                 statusParagraph.appendChild(quoteText);
             }
-
+            getFriends();
 
             //setInterval(getStatus, 2000);
         }

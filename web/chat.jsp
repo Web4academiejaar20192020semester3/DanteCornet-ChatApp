@@ -25,9 +25,11 @@
 
     <input id="newStatus" type="text">
     <input type="button" id="submit" value="verander status">
+    <input type="button" id="friend" value="Voeg nieuwe vriend toe">
 
     <footer id="footer"></footer>
 </main>
 <script type="text/javascript" src="js/status.js"></script>
+<script type="text/javascript" src="js/friends.js"></script>
 </body>
 </html>

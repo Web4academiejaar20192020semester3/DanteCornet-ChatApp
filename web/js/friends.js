@@ -39,7 +39,7 @@ function getFriendsData () {
             var onlinefriends = arrayLength;
 
             for (var i = 0; i < arrayLength; i++) {
-                if(friends[i].status != "offline"){
+                if(friends[i].status = "offline"){
                     offlinefriends++;
                     onlinefriends--;
                 }
