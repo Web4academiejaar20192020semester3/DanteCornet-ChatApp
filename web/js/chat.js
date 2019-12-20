@@ -13,29 +13,36 @@ function postMessages(rec) {
     $.post("Controller?action=Messaging",
         { to: rec, message: message },
         function (json) {
-        /*var newText = $('<p />').text(json);
-            $('.'+rec+'d').append(newText);*/
+        var newText = $('<p />').text(json);
+                $('.'+rec+'d').append(newText);
             getMessages(rec);
         }
-        );
+    );
 }
 
 function getMessages(rec) {
+
     $.ajax({
         type: "GET",
         url: "Controller?action=GetMessages",
         dataType: "json",
+        data: {Person2: rec},
         success: function(json){
-            $(json).each(function(index, message) {
-                alert(message);
-                $('.'+rec+'d').append($('<p />').text(message));
+            $(json).each(function(index, chat) {
+                $('.'+rec+'d').empty()
+                console.log(chat.length)
+                console.log(chat.messages.length);
+                for(var i = 0; i < chat.messages.length; i++ ){
+                    $('.'+rec+'d').append($('<p />').text(chat.messages[i].message));
+                    $('.'+rec+'d').append($('<p />').text(chat.messages[i].));
+
+                }
                 setTimeout(getMessages(rec), 10000);
             })
         },
         error: function() {
-            alert("An error occurred  getting a new quote ...");
             setTimeout(getMessages(rec), 10000);
         }
     });
-    
+
 }

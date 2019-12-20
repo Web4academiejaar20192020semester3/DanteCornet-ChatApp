@@ -43,9 +43,12 @@
 			<p>
 				<input type="submit" id="loginbutton" value="Log in">
 			</p>
+
 		</form>
 	</c:otherwise>
 </c:choose> </main>
+
+		<a href="Controller?action=ShowRegisterForm" id="registerbutton">Register as a new user</a>
 
 	<jsp:include page="footer.jsp">
 		<jsp:param name="title" value="Home" />

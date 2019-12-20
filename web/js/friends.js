@@ -54,8 +54,8 @@ function getFriendsData () {
                     tablerow.appendChild(tableColumn);
 
                     tableColumn = document.createElement('td');
-                    var status = document.createTextNode(friends[i].status+"\n\r");
-                    tableColumn.appendChild(status);
+                    var Status = document.createTextNode(friends[i].status+"\n\r");
+                    tableColumn.appendChild(Status);
                     tablerow.appendChild(tableColumn);
                     friendsDiv.appendChild(tablerow);
                 }
@@ -71,8 +71,8 @@ function getFriendsData () {
                     tablerow.appendChild(tableColumn);
 
                     tableColumn = document.createElement('td');
-                    var status = document.createTextNode(friends[i].status+"\n\r");
-                    tableColumn.appendChild(status);
+                    var Status = document.createTextNode(friends[i].status+"\n\r");
+                    tableColumn.appendChild(Status);
                     tablerow.appendChild(tableColumn);
                     friendsDiv.appendChild(tablerow);
                 }
@@ -86,7 +86,7 @@ function getFriendsData () {
 
 
 
-            //setInterval(getStatus, 2000);
+            setInterval(getStatus, 2000);
         }
     }}
 

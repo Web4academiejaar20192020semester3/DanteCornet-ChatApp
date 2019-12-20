@@ -6,7 +6,11 @@ import domain.PersonService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
+
 
 public class ShowStatus extends AsyncHandler {
     private PersonService model = new PersonService();
@@ -19,8 +23,6 @@ public class ShowStatus extends AsyncHandler {
         response.getWriter().write(quoteJSON);
         return " ";
     }
-
-
 
 
 }

@@ -11,14 +11,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import db.PersonRepositoryStub;
+import domain.Person;
 import domain.PersonService;
 
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private PersonService model = new PersonService();
+
 	private ControllerFactory controllerFactory = new ControllerFactory();
+	private PersonService model = new PersonService();
 
 	public Controller() {
 		super();
@@ -29,33 +34,38 @@ public class Controller extends HttpServlet {
 		processRequest(request, response);
 	}
 
+	public String toJSON (String status) throws JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.writeValueAsString(status);
+	}
+
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}
 
 	protected void processRequest(HttpServletRequest request,
-								  HttpServletResponse response) throws ServletException, IOException {
-		String action = request.getParameter("action");
-		String destination = "index.jsp";
+			HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        String destination = "index.jsp";
 		RequestHandler handler = null;
-		if (action != null) {
+        if (action != null) {
 
-			try {
-				handler = controllerFactory.getController(action, model);
+        	try {
+        		handler = controllerFactory.getController(action, model);
 				destination = handler.handleRequest(request, response);
-			}
-			catch (NotAuthorizedException exc) {
-				List<String> errors = new ArrayList<String>();
-				errors.add(exc.getMessage());
-				request.setAttribute("errors", errors);
-				destination="index.jsp";
-			}
+        	} 
+        	catch (NotAuthorizedException exc) {
+        		List<String> errors = new ArrayList<String>();
+        		errors.add(exc.getMessage());
+        		request.setAttribute("errors", errors);
+        		destination="index.jsp";
+        	}
+        }
+        if(handler instanceof AsyncHandler) {
+        	response.getWriter().write(destination);
 		}
-		if(handler instanceof AsyncHandler) {
-			response.getWriter().write(destination);
-		}
-		else {
+        else {
 			RequestDispatcher view = request.getRequestDispatcher(destination);
 			view.forward(request, response);
 		}
