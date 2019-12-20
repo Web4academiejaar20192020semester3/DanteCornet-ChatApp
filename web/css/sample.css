@@ -52,7 +52,7 @@ p>label {
 }
 
 input[type="text"],input[type="email"],input[type="password"],input[type="number"]
-{
+	{
 	border: 1px solid #aaa;
 	color: #666;
 	height: 30px;
