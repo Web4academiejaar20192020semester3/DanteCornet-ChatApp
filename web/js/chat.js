@@ -34,7 +34,6 @@ function getMessages(rec) {
                 console.log(chat.messages.length);
                 for(var i = 0; i < chat.messages.length; i++ ){
                     $('.'+rec+'d').append($('<p />').text(chat.messages[i].message));
-                    $('.'+rec+'d').append($('<p />').text(chat.messages[i].));
 
                 }
                 setTimeout(getMessages(rec), 10000);
