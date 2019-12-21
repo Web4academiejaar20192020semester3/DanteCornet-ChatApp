@@ -37,13 +37,13 @@ function getFriendsData () {
             var arrayLength = friends.length;
             var offlinefriends = 0;
             var onlinefriends = arrayLength;
-
+            if (friendsDiv != null) {friendsDiv.innerHTML = "";}
             for (var i = 0; i < arrayLength; i++) {
                 if(friends[i].status = "offline"){
                     offlinefriends++;
                     onlinefriends--;
                 }
-                if (tablerow == null) {
+
                     tablerow = document.createElement('tr');
                     var tableColumn = tablerow.childNodes[i];
 
@@ -58,24 +58,6 @@ function getFriendsData () {
                     tableColumn.appendChild(Status);
                     tablerow.appendChild(tableColumn);
                     friendsDiv.appendChild(tablerow);
-                }
-                else if(friends[i-1].userId == friends[i].userId){}
-                else {
-                    tablerow = document.createElement('tr');
-                    var tableColumn = tablerow.childNodes[i];
-
-                    tableColumn = document.createElement('td');
-                    var userid = document.createTextNode(friends[i].userId+"\n\r");
-                    tablerow.id = friends[i].userId;
-                    tableColumn.appendChild(userid);
-                    tablerow.appendChild(tableColumn);
-
-                    tableColumn = document.createElement('td');
-                    var Status = document.createTextNode(friends[i].status+"\n\r");
-                    tableColumn.appendChild(Status);
-                    tablerow.appendChild(tableColumn);
-                    friendsDiv.appendChild(tablerow);
-                }
             }
 
             var off = document.createTextNode("offline friends: " + offlinefriends);

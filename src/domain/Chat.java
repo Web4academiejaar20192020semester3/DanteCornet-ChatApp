@@ -44,7 +44,11 @@ public class Chat {
     }
 
     public boolean equals(Chat c){
-        if(this.person1 == c.getPerson2() && this.person2 == c.getPerson1()){return true;}
-        else return false;
+        return this.person1 == c.getPerson2() && this.person2 == c.getPerson1();
+    }
+
+    public Chat(Person person1, Person person2) {
+        this.person1 = person1;
+        this.person2 = person2;
     }
 }

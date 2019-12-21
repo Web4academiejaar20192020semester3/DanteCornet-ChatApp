@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import db.PersonRepositoryStub;
+import db.Service;
 import domain.Person;
 import domain.PersonService;
 
@@ -24,6 +25,7 @@ public class Controller extends HttpServlet {
 
 	private ControllerFactory controllerFactory = new ControllerFactory();
 	private PersonService model = new PersonService();
+	private Service service = new Service();
 
 	public Controller() {
 		super();
@@ -52,7 +54,7 @@ public class Controller extends HttpServlet {
         if (action != null) {
 
         	try {
-        		handler = controllerFactory.getController(action, model);
+        		handler = controllerFactory.getController(action, model, service);
 				destination = handler.handleRequest(request, response);
         	} 
         	catch (NotAuthorizedException exc) {

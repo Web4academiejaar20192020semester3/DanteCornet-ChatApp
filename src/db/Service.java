@@ -19,7 +19,6 @@ public class Service {
                 return chat;
             }
         }
-
         return null;
     }
 

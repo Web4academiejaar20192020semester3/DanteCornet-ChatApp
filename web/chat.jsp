@@ -20,7 +20,7 @@
             <th>status</th>
         </tr>
         </thead>
-        <tbody  id="friends"></tbody>
+        <tbody id="friends"></tbody>
     </table>
 
     <input id="newStatus" type="text">
