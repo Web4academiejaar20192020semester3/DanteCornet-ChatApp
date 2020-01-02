@@ -21,7 +21,7 @@ public class GetMessages extends AsyncHandler {
         Person person1 = (Person) session.getAttribute("user");
         String sperson2 = request.getParameter("Person2");
         Person person2 = getPersonService().getPerson(sperson2);
-        Chat chat = service.getChat(person1, person2);
+        Chat chat = getService().getChat(person1, person2);
         json = this.chatToJSON(chat);
         response.setContentType("application/json");
         response.getWriter().write(json);

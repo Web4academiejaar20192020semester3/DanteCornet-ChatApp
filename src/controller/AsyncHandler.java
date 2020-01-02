@@ -38,6 +38,7 @@ public abstract class AsyncHandler extends RequestHandler {
     }
 
     public Service getService() {
+
         return service;
     }
 }
